@@ -2,8 +2,8 @@ name: Build and Release DLL
 
 on:
   push:
-    branches: [master]
-    tags: ["v*"]   # Add this line to trigger on version tags
+    tags:
+      - "v*"
 
 jobs:
   build:
