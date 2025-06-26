@@ -5,19 +5,47 @@ using PokerBots.Abstractions;
 
 class Program
 {
+    static IPokerBot CreateBot() => new BotTemplate(); // Replace with bot class
+
     static async Task Main()
     {
-        var bot = new BotTemplate(); // IPokerBot implementation
+        IPokerBot bot = CreateBot();
 
-        string line;
+        string? line;
         while ((line = Console.ReadLine()) != null)
         {
-            var state = JsonSerializer.Deserialize<GameState>(line);
-            if (state == null) continue;
+            line = line.Trim();
 
-            var action = bot.GetAction(state);
-            var json = JsonSerializer.Serialize(action);
-            Console.WriteLine(json);
+            if (line == "__name__")
+            {
+                Console.WriteLine(bot.Name);
+                continue;
+            }
+
+            if (line == "__reset__")
+            {
+                bot = CreateBot();
+                Console.WriteLine("OK");
+                continue;
+            }
+
+            try
+            {
+                var state = JsonSerializer.Deserialize<GameState>(line);
+                if (state == null)
+                {
+                    Console.WriteLine("{\"ActionType\":\"Fold\"}");
+                    continue;
+                }
+
+                var action = bot.GetAction(state);
+                var json = JsonSerializer.Serialize(action);
+                Console.WriteLine(json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{\"ActionType\":\"Fold\"}"); // Safe fallback
+            }
         }
     }
 }
