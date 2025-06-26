@@ -3,6 +3,7 @@ name: Build and Release DLL
 on:
   push:
     branches: [master]
+    tags: ["v*"]   # Add this line to trigger on version tags
 
 jobs:
   build:
@@ -27,6 +28,7 @@ jobs:
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: output/*.dll
         env:
