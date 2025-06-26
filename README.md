@@ -1,7 +1,7 @@
 # Välkommen till ditt PokerBot-repo!
 
 Det här projektet är en **template-repo** i organisationen. När du går med i organisationen bör du automatiskt (eller inom kort) få ett eget repo baserat på denna mall.
-Om det här redan är ditt repo – toppen! Annars kan du skapa ett nytt genom att gå till denna repo-sida och klicka på den gröna knappen **"Use this template"** uppe till höger. Välj sedan "Create new repository" i organisationen.
+Om det här redan är ditt repo – toppen! Annars vänta 10 minuter. I värsta fall kan du skapa ett nytt genom att gå till [denna repo-sida](https://github.com/PokerBotsBoras/BotTemplate) och klicka på den gröna knappen **"Use this template"** uppe till höger. Välj sedan "Create new repository" -> välj organisationen som ägare, och skriv ett namn som börjar på "bots-".
 
 ---
 
