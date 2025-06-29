@@ -4,7 +4,4 @@
     <TargetFramework>net9.0</TargetFramework>
     <AssemblyName>bot</AssemblyName>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="PokerBots.Abstractions" Version="1.0.1" />
-  </ItemGroup>
 </Project>

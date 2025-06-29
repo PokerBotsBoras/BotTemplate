@@ -5,7 +5,7 @@ using PokerBots.Abstractions;
 
 class Program
 {
-    static IPokerBot CreateBot() => new BotTemplate(); // Replace with bot class
+    static IPokerBot CreateBot() => new BotTemplate();
 
     static async Task Main()
     {
@@ -34,17 +34,22 @@ class Program
                 var state = JsonSerializer.Deserialize<GameState>(line);
                 if (state == null)
                 {
-                    Console.WriteLine("{\"ActionType\":\"Fold\"}");
+                    Console.WriteLine(JsonSerializer.Serialize(new PokerAction { ActionType = PokerActionType.Fold }));
                     continue;
                 }
 
                 var action = bot.GetAction(state);
+                // Only set Amount for Raise, not for Call or Fold
+                if (action.ActionType != PokerActionType.Raise)
+                {
+                    action.Amount = null;
+                }
                 var json = JsonSerializer.Serialize(action);
                 Console.WriteLine(json);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("{\"ActionType\":\"Fold\"}"); // Safe fallback
+                Console.WriteLine(JsonSerializer.Serialize(new PokerAction { ActionType = PokerActionType.Fold }));
             }
         }
     }
