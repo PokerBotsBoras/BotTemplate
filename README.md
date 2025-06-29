@@ -1,7 +1,7 @@
 # Välkommen till ditt PokerBot-repo!
 
-Det här projektet är en **template-repo** i organisationen. När du går med i organisationen bör du automatiskt (eller inom kort) få ett eget repo baserat på denna mall.
-Om det här redan är ditt repo – toppen! Annars vänta 10 minuter. I värsta fall kan du skapa ett nytt genom att gå till [denna repo-sida](https://github.com/PokerBotsBoras/BotTemplate) och klicka på den gröna knappen **"Use this template"** uppe till höger. Välj sedan "Create new repository" -> välj organisationen som ägare, och skriv ett namn som börjar på "bots-".
+>Det här projektet är en **template-repo** i organisationen. När du går med i organisationen bör du automatiskt (eller inom kort) få ett eget repo baserat på denna mall.
+Om det här redan är ditt repo – toppen! Annars vänta 10 minuter. I värsta fall kan du skapa ett nytt genom att gå till [denna repo-sida](https://github.com/PokerBotsBoras/BotTemplate) och klicka på den gröna knappen **"Use this template"** uppe till höger. Välj sedan "Create new repository" -> välj organisationen som ägare istället för digsjälv, och skriv ett namn som börjar på "bots-".
 
 ---
 
@@ -18,19 +18,26 @@ dotnet restore
 ## Kom igång
 
 I `Bot/BotTemplate.cs` hittar du ett exempel på hur en bot är uppbyggd. Du kan använda den som utgångspunkt eller skriva en egen.
-Det viktiga är att din bot implementerar `IPokerBot`-interfacet som finns i NuGet-paketet `PokerBotsBoras.Abstractions`.
+
+---
+
+## Reglerna 
+
+**Heads-Up Micro Hold’em** är en förenklad och snabb pokervariant där en hand är bara 2 kort. Varje spelare får en privat kort och delar ett gemensamt – vilket skapar ett koncentrerat läge för strategi, bluffar och snabb bedömning av sannolikheter. Spelet spelas alltid "heads-up" (1 mot 1), vilket gör att varje beslut väger tungt. Reglerna är anpassade för att vara enkla att implementera men tillräckligt komplexa för att skapa intressant botlogik.
+
+Se de [Kompletta reglerna](Docs/GameRules.md) för  **Heads-Up Micro Hold’em**
 
 ---
 
 ## Submitta din bot
 
 Varje gång du **pushar till `master`-branchen med en tag som börjar med `v`**, t.ex. `v1.0.0`, så körs GitHub-workflowen [`build-and-release`](.github/workflows/build-and-release.yml).
-Den bygger en `.dll` som sedan används av [TournamentRunner](https://github.com/PokerBotsBoras/TournamentRunner) – ett projekt du gärna får klona och testa lokalt. TournamentRunner kör tävlingen mellan alla bottar.
+Den bygger en `.dll` som sedan används av [TournamentRunner](https://github.com/PokerBotsBoras/TournamentRunner) – ett projekt du gärna får klona och testa lokalt, då kan du testa och se hur din bot funkar. TournamentRunner kör tävlingen mellan alla bottar.
 
 ### Exempel – om du inte använt tags tidigare:
 
 1. Gör dina ändringar och committa till `master`.
-2. Skapa en tag:
+2. Skapa en tag som börjar på "v":
 
    ```sh
    git tag v1.0.0
