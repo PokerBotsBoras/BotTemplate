@@ -19,6 +19,23 @@ dotnet restore
 
 I `Bot/BotTemplate.cs` hittar du ett exempel på hur en bot är uppbyggd. Du kan använda den som utgångspunkt eller skriva en egen.
 
+### Du implementerar IPokerBo
+Du implementerar gränssnittet IPokerBot. Turneringen kommer att använda din kod, vilket innebär att:
+
+ - ✅ Den exekveras som en fristående process (Sköter TurnamentRunner)
+
+ - ✅ Den får ett JSON-formaterat GameState via stdin (finns i redan i template)
+
+ - ✅ Den måste svara med en JSON-formaterad PokerAction via stdout (detta är redan löst i templaten)
+
+ - ⚠️ Den måste svara inom 1 sekund
+
+ - ‼️ ⚠️ Det är **i din implementation av IPokerBot som all din spelstrategi ska sitta** ⚠️  ‼️.
+ 
+ Implementationen av IpokerBot är egentligen det enda du behöver ändra ör att göra en komplett bot.
+
+ Se mer detaljer i [TournamentRunner](https://github.com/PokerBotsBoras/TournamentRunner)
+
 ---
 
 ## Reglerna 
